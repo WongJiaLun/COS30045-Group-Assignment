@@ -54,8 +54,8 @@ Planned visualisations may include:
 ### Team Members
 
 Pang Jun Hao	- 106212908<br>
-Wong Jia Lun	-<br>
-Daniel Yong	-<br>
+Wong Jia Lun	- 105728022<br>
+Daniel Yong	- 106213024<br>
 
 
 ### Website
@@ -75,4 +75,4 @@ Responsibility for all project decisions, analysis, and implementation remains w
 
 ### References
 Bureau of Infrastructure and Transport Research Economics. (2023). Hospitalised injuries from road<br>
-crashes. https://www.bitre.gov.au/publications/ongoing/hospitalised-injury
+crashes. **https://www.bitre.gov.au/publications/ongoing/hospitalised-injury**
