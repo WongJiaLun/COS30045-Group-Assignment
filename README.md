@@ -74,5 +74,8 @@ that includes a summary of the prompts used.<br>
 Responsibility for all project decisions, analysis, and implementation remains with the project team.<br>
 
 ### References
-Bureau of Infrastructure and Transport Research Economics. (2023). Hospitalised injuries from road<br>
-crashes. **https://www.bitre.gov.au/publications/ongoing/hospitalised-injury**
+Bureau of Infrastructure and Transport Research Economics. (2023a). Data dictionary: Hospitalised injuries from road crashes. 
+**https://www.bitre.gov.au/sites/default/files/documents/hospitalised-injury-data-dictionary-september-2023.pdf**<br>
+Bureau of Infrastructure and Transport Research Economics. (2023b). Hospitalised injuries from road<br>
+crashes. **https://www.bitre.gov.au/publications/ongoing/hospitalised-injury**<br>
+
