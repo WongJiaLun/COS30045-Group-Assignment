@@ -65,7 +65,7 @@ GitHub Repository: **https://github.com/WongJiaLun/COS30045-Group-Assignment.git
 <hr>
 
 ### Generative AI Declaration
-Generative AI tools may be used to assist to support the development progress, such as refreshing programming concepts<br>
+Generative AI tools may be used to assist to support the development progress, such as refreshing programming concepts
 troubleshooting issues, and improving project documentation.
 
 AI-generated code will be carefully reviewed and adjusted when needed, and clearly acknowledge in the source code<br>
