@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jom Visuals</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div>
+        <div class="eyebrow">Jom Visuals</div>
+        <h1>Hospitalisations, 2011 to 2021</h1>
+      </div>
+      <nav class="tabs" role="tablist" aria-label="Pages">
+        <button class="tab" role="tab" id="tab-overview" aria-controls="page-overview" aria-selected="true">Yearly overview</button>
+        <button class="tab" role="tab" id="tab-monthly" aria-controls="page-monthly" aria-selected="false" tabindex="-1">Monthly trend</button>
+        <button class="tab" role="tab" id="tab-seasonality" aria-controls="page-seasonality" aria-selected="false" tabindex="-1">Seasonality</button>
+        <button class="tab" role="tab" id="tab-who" aria-controls="page-who" aria-selected="false" tabindex="-1">Who and where</button>
+      </nav>
+    </header>
+
+    <main id="main">
+      <!-- PAGE 1: bar chart -->
+      <section id="page-overview" class="page" role="tabpanel" aria-labelledby="tab-overview">
+        <div class="figures">
+          <div class="hero">
+            <div class="lab">Hospitalisations in 2021</div>
+            <div class="hero-val" id="hero-val"></div>
+            <div class="hero-delta" id="hero-delta"></div>
+          </div>
+          <div class="tiles" id="tiles-overview"></div>
+        </div>
+        <div class="grid-chart-table">
+          <article class="card">
+            <h2 id="t-year"></h2>
+            <p class="sub">Bar chart of calendar-year totals. Bars start at zero.</p>
+            <div class="legend" id="lg-year"></div>
+            <div class="chart" id="ch-bar"></div>
+          </article>
+          <article class="card">
+            <h2>Year-by-year figures</h2>
+            <p class="sub" id="sub-table"></p>
+            <div class="tablewrap full" id="tb-year"></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- PAGE 2: line graph + scatterplot -->
+      <section id="page-monthly" class="page" role="tabpanel" aria-labelledby="tab-monthly" hidden>
+        <div class="filters">
+          <span class="flabel">Period</span>
+          <div class="seg" id="seg-range" role="group" aria-label="Period"></div>
+        </div>
+        <div class="tiles" id="tiles-monthly"></div>
+        <article class="card">
+          <h2>Hospitalisations per month</h2>
+          <p class="sub" id="sub-line"></p>
+          <div class="legend" id="lg-line"></div>
+          <div class="chart" id="ch-line"></div>
+          <details class="tv"><summary>View as table</summary><div class="tablewrap" id="tb-line"></div></details>
+        </article>
+        <article class="card">
+          <h2>This month against the same month a year earlier</h2>
+          <p class="sub" id="sub-scatter"></p>
+          <div class="legend" id="lg-scatter"></div>
+          <div class="chart" id="ch-scatter"></div>
+          <details class="tv"><summary>View as table</summary><div class="tablewrap" id="tb-scatter"></div></details>
+        </article>
+      </section>
+
+      <!-- PAGE 3: pie chart -->
+      <section id="page-seasonality" class="page" role="tabpanel" aria-labelledby="tab-seasonality" hidden>
+        <div class="filters">
+          <span class="flabel">Years included</span>
+          <div class="seg" id="seg-years" role="group" aria-label="Years included"></div>
+        </div>
+        <div class="tiles" id="tiles-season"></div>
+        <div class="grid-pie">
+          <article class="card">
+            <h2 id="t-pie">Share of hospitalisations by quarter</h2>
+            <p class="sub" id="sub-pie"></p>
+            <div class="legend" id="lg-pie"></div>
+            <div class="chart" id="ch-pie"></div>
+            <details class="tv"><summary>View as table</summary><div class="tablewrap" id="tb-pie"></div></details>
+          </article>
+          <article class="card">
+            <h2>Month by month</h2>
+            <p class="sub">Each month's count divided by its own year's monthly average, then averaged across years.</p>
+            <div class="tablewrap full" id="tb-month"></div>
+          </article>
+        </div>
+      </section>
+      <!-- PAGE 4: sex (line graph) and area (bar chart) -->
+      <section id="page-who" class="page" role="tabpanel" aria-labelledby="tab-who" hidden>
+        <div class="filters">
+          <span class="flabel">Period</span>
+          <div class="seg" id="seg-who" role="group" aria-label="Period"></div>
+        </div>
+        <div class="tiles" id="tiles-who"></div>
+        <article class="card">
+          <h2>Hospitalisations per month, by sex</h2>
+          <p class="sub" id="sub-sex"></p>
+          <div class="legend" id="lg-sex"></div>
+          <div class="chart" id="ch-sex"></div>
+          <details class="tv"><summary>View as table</summary><div class="tablewrap" id="tb-sex"></div></details>
+        </article>
+        <div class="grid-chart-table">
+          <article class="card">
+            <h2>Hospitalisations by area</h2>
+            <p class="sub" id="sub-area"></p>
+            <div class="chart" id="ch-area"></div>
+          </article>
+          <article class="card">
+            <h2>Area by area</h2>
+            <p class="sub">The numbers behind the chart, for the period chosen.</p>
+            <div class="tablewrap full" id="tb-area"></div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <p class="foot" id="data-note"></p>
+  </div>
+
+  <div class="tip" id="tip" role="status" aria-live="off"></div>
+
+  <!-- D3 comes from the internet (jsDelivr), pinned to version 7.9.0 -->
+  <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+  <script>
+    // say so plainly if D3 could not be reached
+    if (!window.d3) {
+      var m = document.getElementById('main'), p = document.createElement('p');
+      p.className = 'error';
+      p.textContent = 'D3 could not be loaded from the internet. Check your connection and reload the page.';
+      m.textContent = ''; m.appendChild(p);
+    }
+  </script>
+  <!-- shared code -->
+  <script src="js/utils.js"></script>
+  <script src="js/data.js"></script>
+  <!-- chart modules: one bar, one line, one scatterplot, one pie -->
+  <script src="js/charts/bar-chart.js"></script>
+  <script src="js/charts/line-chart.js"></script>
+  <script src="js/charts/scatter-plot.js"></script>
+  <script src="js/charts/pie-chart.js"></script>
+  <!-- pages and start-up -->
+  <script src="js/pages/overview.js"></script>
+  <script src="js/pages/monthly.js"></script>
+  <script src="js/pages/seasonality.js"></script>
+  <script src="js/pages/who-where.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
