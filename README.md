@@ -14,8 +14,8 @@ compare hospitalisation statistics.
 ### Project Objectives 
 The main objectives of this project are:
 1. Analyse trends in hospitalised road crash injuries from 2011 to 2021.
-2. Compare hospitalisation counts across selected categories, such as road user types, age groups and remoteness areas.
-3. Identify meaningful patterns and differences in the dataset.
+2. Observe the patterns in monthly hospitalisation counts, which also includes the seasonal differences.
+3. Compare how hospitalisation counts differ between males and females and across different remoteness areas.
 
 <hr>
 
@@ -46,8 +46,36 @@ Planned visualisations may include:
 🚧 Interactive visualisations are currently under development and will be included in a future release
 
 ### Project Structure
+```text
 
-🚧 The project structure is still under development and will be documented after the implementation is finished.
+jom-visuals-dashboard/
+│
+├── index.html
+├── README.md
+│
+├── css/<br>
+│   └── styles.css
+│
+├── data/
+│   └── JomVisualsDataFinal.csv
+│
+└── js/
+    ├── main.js
+    ├── data.js
+    ├── utils.js
+    │
+    ├── pages/
+    │   ├── overview.js
+    │   ├── monthly.js
+    │   ├── seasonality.js
+    │   └── who-where.js
+    │
+    └── charts/
+        ├── bar-chart.js
+        ├── line-chart.js
+        ├── pie-chart.js
+        └── scatter-plot.js
+```
 
 <hr>
 
