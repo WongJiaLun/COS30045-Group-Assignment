@@ -12,7 +12,7 @@
 
   JV.charts.bar = function (el, o) {
     const W = el.clientWidth || 320;
-    const H = o.height || (W < 520 ? 270 : 320);
+    const H = o.height || el.clientHeight || (W < 520 ? 270 : 320);
     const { svg, g, w, h } = mk(el, H, { t: 26, r: 8, b: 28, l: 46 });
     svg.attr('aria-label', o.aria);
 

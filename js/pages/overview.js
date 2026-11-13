@@ -1,15 +1,14 @@
-/* PAGE 1, Yearly overview: headline figures, one bar chart of yearly totals, and the table behind it. */
+/* PAGE 1, Yearly overview: headline figures and a histogram of monthly distribution. */
 (function () {
   'use strict';
-  const { $, fmt, pct, signedN, kfmt, listJoin, legend, tiles, table } = JV.u;
+  const { $, fmt, pct, signedN, tiles } = JV.u;
 
   JV.pages.overview = {
-    // static content that only needs to be written once
     build(data) {
       const { yearly } = data;
       const first = yearly[0], last = yearly[yearly.length - 1];
       const by = yr => yearly.find(d => d.year === yr);
-      const y2012 = by(2012), y2016 = by(2016), y2020 = by(2020);
+      const y2020 = by(2020);
 
       $('hero-val').textContent = fmt(last.value);
       $('hero-delta').textContent = (last.value >= first.value ? '▲ ' : '▼ ') +
@@ -22,39 +21,23 @@
         { label: 'Average per year', value: fmt(Math.round(d3.mean(yearly, d => d.value))), sub: first.year + ' to ' + last.year }
       ]);
 
-      $('t-year').textContent = 'Yearly totals rose ' + Math.round((y2016.value / y2012.value - 1) * 100) +
-        '% from 2012 to 2016, then levelled off';
-      legend('lg-year', [
-        { label: 'Other years', color: 'var(--s1)', type: 'rect' },
-        { label: '2020', color: 'var(--s2)', type: 'rect' }
-      ]);
-
-      const falls = yearly.filter(d => d.yoy != null && d.yoy < 0).map(d => d.year);
-      table('tb-year', ['Year', 'Hospitalisations', 'On prior year'],
-        yearly.map(d => [d.year, fmt(d.value), d.yoy == null ? '–' : pct(d.yoy)]));
-      $('sub-table').textContent = 'The numbers behind the chart. Totals fell year on year only in ' + listJoin(falls) + '.';
+      $('t-year').textContent = 'Distribution of Monthly Hospitalisations';
+      $('lg-year').textContent = ''; 
     },
 
     draw(data) {
-      const { yearly } = data;
-      const first = yearly[0];
-      JV.charts.bar($('ch-bar'), {
-        data: yearly,
-        x: d => d.year,
-        xText: d => d.year,
-        xShort: d => "'" + String(d.year).slice(2),
-        value: d => d.value,
-        color: d => (d.year === 2020 ? 'var(--s2)' : 'var(--s1)'),
-        yFmt: kfmt,
-        labelIf: d => d === first || d.year === 2020,
-        labelFmt: d => fmt(d.value),
-        aria: 'Bar chart of hospitalisations per calendar year, 2011 to 2021',
-        barAria: d => d.year + ': ' + fmt(d.value) + ' hospitalisations',
+      const chartEl = $('ch-bar');
+      const values = data.monthly.map(d => d.value);
+
+      JV.charts.histogram(chartEl, {
+        data: values,
+        height: chartEl.clientHeight,
+        color: 'var(--s1)',
+        aria: 'Histogram showing the distribution of monthly hospitalisation counts',
         info: d => ({
-          key: 'y' + d.year,
-          title: String(d.year),
-          rows: [{ value: fmt(d.value), label: 'hospitalisations' }]
-            .concat(d.yoy == null ? [] : [{ value: pct(d.yoy), label: 'on ' + (d.year - 1) }])
+          key: 'h' + d.x0,
+          title: `${fmt(d.x0)} to ${fmt(d.x1)} cases`,
+          rows: [{ value: d.length, label: d.length === 1 ? 'month' : 'months' }]
         })
       });
     }

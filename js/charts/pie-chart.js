@@ -10,7 +10,8 @@
   const { mk, tip, plainPct } = JV.u;
 
   JV.charts.pie = function (el, o) {
-    const W = el.clientWidth || 320, H = W < 520 ? 300 : 340;
+    const W = el.clientWidth || 320;
+    const H = o.height || el.clientHeight || (W < 520 ? 300 : 340);
     const { svg, g } = mk(el, H, { t: 0, r: 0, b: 0, l: 0 });
     svg.attr('aria-label', o.aria);
     g.attr('transform', 'translate(' + (Math.max(260, W) / 2) + ',' + (H / 2) + ')');

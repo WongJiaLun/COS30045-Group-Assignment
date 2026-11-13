@@ -486,3 +486,54 @@ th.num, td.num {
 }
 
 @media (prefers-reduced-motion: reduce) { .tip { transition: none; } }
+/* --- OVERRIDES FOR NO-SCROLL SINGLE-CHART LAYOUT --- */
+body, html {
+  height: 100vh;
+  overflow: hidden; /* Locks scrolling */
+}
+body {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 12px;
+}
+.wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  max-height: 100%;
+  width: 100%;
+}
+#main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.page {
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  gap: 12px;
+  padding-top: 12px;
+}
+.page:not([hidden]) {
+  display: flex; /* Overrides default flex behavior to allow toggling */
+}
+.card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.chart {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+}
+.chart svg {
+  max-height: 100%;
+}
+.foot {
+  margin-top: 8px; /* Tighter footer */
+}

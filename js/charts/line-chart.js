@@ -29,7 +29,8 @@
 
   JV.charts.line = function (el, o) {
     const data = o.data;
-    const W = el.clientWidth || 320, H = W < 520 ? 280 : 340;
+    const W = el.clientWidth || 320;
+const H = o.height || el.clientHeight || (W < 520 ? 280 : 340);
     const { svg, g, w, h } = mk(el, H, { t: 30, r: 14, b: 30, l: 50 });
     svg.attr('aria-label', o.aria);
 

@@ -5,7 +5,7 @@
   'use strict';
   const { $, tip } = JV.u;
 
-  const ORDER = ['overview', 'monthly', 'seasonality', 'who'];
+  const ORDER = ['overview', 'monthly','scatter', 'seasonality', 'who'];
   let data = null;
   let current = ORDER.indexOf(location.hash.slice(1)) >= 0 ? location.hash.slice(1) : 'overview';
 
