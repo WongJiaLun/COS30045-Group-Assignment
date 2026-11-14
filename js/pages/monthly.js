@@ -15,8 +15,8 @@
 
     buildFilter(data) {
       segmented('seg-range', presets, state.id, id => {
-        const p = presets.find(x => x.id === id);
-        state.id = p.id; state.a = p.a;
+        const p = presets.find(x => x.id === id); //Finds the '5yr' preset 
+        state.id = p.id; state.a = p.a;// updates the starting index
         this.buildFilter(data);
         this.draw(data);
       });
