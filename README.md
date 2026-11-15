@@ -117,6 +117,14 @@ Responsibility for all project decisions, analysis, and implementation remains w
 ### References
 Bureau of Infrastructure and Transport Research Economics. (2023a). Data dictionary: Hospitalised injuries from road crashes. 
 **https://www.bitre.gov.au/sites/default/files/documents/hospitalised-injury-data-dictionary-september-2023.pdf**<br>
-Bureau of Infrastructure and Transport Research Economics. (2023b). Hospitalised injuries from road<br>
-crashes. **https://www.bitre.gov.au/publications/ongoing/hospitalised-injury**<br>
+Bureau of Infrastructure and Transport Research Economics. (2023b). Hospitalised injuries from road crashes.<br>
+**https://www.bitre.gov.au/publications/ongoing/hospitalised-injury**<br>
+Statistics Canada. (2023). Data visualization best practices. Government of Canada.<br>
+**https://www.statcan.gc.ca/en/data-visualization**<br>
+Government Digital Service. (2024). Charts. GOV.UK Design System.<br>
+**https://design-system.service.gov.uk/data-visualisation/**<br>
+Segel, E., & Heer, J. (2010). Narrative visualization: Telling stories with data. IEEE Transactions on Visualization and Computer Graphics, 16(6), 1139–1148.
+**https://ieeexplore.ieee.org/document/5613452**
+
+
 
