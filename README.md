@@ -38,12 +38,25 @@ sex, road user types and remoteness area.
 <hr>
 
 ### Visualisations Used
-This project will feature a set of interactive charts designed to present key findings from the dataset.<br>
-These visualisations are intended to help users explore trends, patterns, and relationships within the data.
+Jom Visuals uses 4 different types of interactive visualisation charts to help users to explore hospitalised<br>
+road crash injury data in Australia from 2011 to 2021.
 
-Planned visualisations may include:
+### 1. Bar Chart
+Displays yearly hospitalisation counts to compare changes between years. It is also used to compare hospitalisations across different remoteness areas.
 
-🚧 Interactive visualisations are currently under development and will be included in a future release
+### 2. Line Chart
+Shows monthly hospitalisation trends over time.
+
+### 3. Scatter Plot
+Displays monthly hospitalisation counts to help identify changes and unusual patterns over time.
+
+### 4. Pie Chart
+Shows the distribution of hospitalisations across the four quarters of the year.
+
+### Interactive Features
+- **Filters:** Allow users to select specific time periods and exclude 2020 from the analysis.
+- **Tooltips:** Display additional information and exact values when users hover over the chart.
+- **Data Tables:** Allow users to view and compare hospitalisation figures in more detail.
 
 ### Project Structure
 ```text
