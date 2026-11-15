@@ -66,7 +66,7 @@ jom-visuals-dashboard/
 ├── index.html
 ├── README.md
 │
-├── css/<br>
+├── css/
 │   └── styles.css
 │
 ├── data/
@@ -82,6 +82,7 @@ jom-visuals-dashboard/
     │   ├── monthly.js
     │   ├── seasonality.js
     │   └── who-where.js
+    |   └── scatter.js
     │
     └── charts/
         ├── bar-chart.js
